@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/week"
+        app:showAsAction="never"
+        android:title="添加密码">
+    </item>
+
+    <item
+        android:id="@+id/selectTerm"
+        android:title="面部管理"
+        app:showAsAction="never"/>
+</menu>
