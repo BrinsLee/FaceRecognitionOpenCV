@@ -17,7 +17,7 @@ import org.opencv.android.OpenCVLoader
 
 class MainActivity : AppCompatActivity() {
 
-    var s : CameraBridgeViewBase
+    var s : CameraBridgeViewBase? = null
     val TAG = "MainActivity"
     private var mExitTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,6 +11,7 @@ import android.view.SurfaceView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_recognition.*
 import org.opencv.android.*
+import org.opencv.core.Core
 import org.opencv.core.CvType
 import org.opencv.core.Mat
 
@@ -105,7 +106,11 @@ class Recognition : AppCompatActivity() , CameraBridgeViewBase.CvCameraViewListe
 
     override fun onCameraFrame(inputFrame: CameraBridgeViewBase.CvCameraViewFrame?): Mat {
 
-        mRgba = inputFrame!!.rgba()
+        var gray = inputFrame!!.gray()
+        mRgba = inputFrame.rgba()
+//        if(isFront)
+        Core.rotate(mRgba, mRgba, Core.ROTATE_90_CLOCKWISE);
+        Core.rotate(gray, gray, Core.ROTATE_90_CLOCKWISE);
         return  mRgba
     }
 }

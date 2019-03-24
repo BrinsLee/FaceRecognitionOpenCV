@@ -454,7 +454,8 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
     // NOTE: On Android 4.1.x the function must be called before SurfaceTexture constructor!
     protected void AllocateCache()
     {
-        mCacheBitmap = Bitmap.createBitmap(mFrameWidth, mFrameHeight, Bitmap.Config.ARGB_8888);
+        mCacheBitmap = Bitmap.createBitmap(mFrameHeight, mFrameWidth, Bitmap.Config.ARGB_8888);
+//        mCacheBitmap = Bitmap.createBitmap(mFrameWidth, mFrameHeight, Bitmap.Config.ARGB_8888);
     }
 
     public interface ListItemAccessor {
@@ -481,8 +482,8 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
         for (Object size : supportedSizes) {
             int width = accessor.getWidth(size);
             int height = accessor.getHeight(size);
-
-            if (width <= maxAllowedWidth && height <= maxAllowedHeight) {
+//            width <= maxAllowedWidth && height <= maxAllowedHeight
+            if (height <= maxAllowedWidth && width <= maxAllowedHeight) {
                 if (width >= calcWidth && height >= calcHeight) {
                     calcWidth = (int) width;
                     calcHeight = (int) height;
