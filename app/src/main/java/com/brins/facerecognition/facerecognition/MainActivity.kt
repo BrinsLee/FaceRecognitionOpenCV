@@ -1,18 +1,24 @@
 package com.brins.facerecognition.facerecognition
 
 import android.content.Intent
+import android.nfc.Tag
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import org.opencv.android.CameraBridgeViewBase
+import org.opencv.android.OpenCVLoader
 
 class MainActivity : AppCompatActivity() {
 
+    var s : CameraBridgeViewBase
+    val TAG = "MainActivity"
     private var mExitTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +31,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        if(OpenCVLoader.initDebug()){
+            Log.i(TAG,"Opencv loaded successfully")
+        }else{
+            Log.i(TAG,"Opencv not load")
+        }
 
     }
 
@@ -51,20 +62,6 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onKeyDown(keyCode, event)
-    }
-
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    external fun stringFromJNI(): String
-
-    companion object {
-
-        // Used to load the 'native-lib' library on application startup.
-        init {
-            System.loadLibrary("native-lib")
-        }
     }
 
 
